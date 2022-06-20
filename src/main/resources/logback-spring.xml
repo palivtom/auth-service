@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <property resource="application.properties" />
+
+    <root level="INFO">
+        <springProfile name="prod">
+            <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+                <destination>${LOGSTASH_HOST}</destination>
+                <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                    <customFields>{"application_name":"${spring.application.name}"}</customFields>
+                </encoder>
+            </appender>
+        </springProfile>
+    </root>
+
+</configuration>
