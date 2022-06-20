@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-# add open JDK 11 and DNS tools
+# add open JDK 11 and tini
 RUN apk update && apk upgrade && apk --update add openjdk11 tini && rm -rf /tmp/* /var/cache/apk/*
 
 #add user for the application
